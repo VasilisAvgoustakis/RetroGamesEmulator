@@ -27,7 +27,9 @@ public class Ship {
     }
 
     public void display(SpaceRaceCanvas canvas){
-        //canvas.paint();
+        Graphics g = canvas.getGraphics();
+        g.setColor(Color.white);
+        g.fillOval(this.x, this.y, this.r * 2, this.r * 2);
     }
 
     public void up(){

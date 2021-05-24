@@ -16,8 +16,9 @@ public class SpaceRaceCanvas extends Canvas {
         this.setSize(this.width, this.height);
         this.setBackground(Color.black);
     }
+    //@Override
+    //public void paint(Graphics g){
+        //g.setColor(Color.white);
+        //g.fillOval(10, 101, 10, 10);
 
-    public void paint(Graphics g) {
-        g.fillOval(100, 100, 200, 200);
-    }
 }
