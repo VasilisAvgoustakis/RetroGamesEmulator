@@ -14,7 +14,7 @@ public class SpaceRaceCanvas extends Canvas {
         this.width = 800;
         this.height = 800;
         this.setSize(this.width, this.height);
-        this.setBackground(Color.black);
+        this.setBackground(Color.pink);
     }
 
     public void paint(Graphics g) {

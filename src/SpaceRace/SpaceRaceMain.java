@@ -8,9 +8,6 @@ import java.awt.*;
 
 public class SpaceRaceMain {
 
-
-
-
     public static void main(String[] args){
         // the window that will contain the canvas.
         JFrame frame = new JFrame("SpaceRace");
