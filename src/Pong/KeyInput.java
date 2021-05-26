@@ -31,22 +31,22 @@ public class KeyInput extends KeyAdapter {
             if (tempObject.getId() == ID.Player) {
 
                 if (key == KeyEvent.VK_W) {
-                    tempObject.setVelY(-5);
+                    tempObject.setVelY(-10);
                     keyDown[0] = true;
                 }
                 if (key == KeyEvent.VK_S) {
-                    tempObject.setVelY(5);
+                    tempObject.setVelY(10);
                     keyDown[1] = true;
                 }
             }
             //player two
             if (tempObject.getId() == ID.Player2) {
                 if (key == KeyEvent.VK_UP) {
-                    tempObject.setVelY(-5);
+                    tempObject.setVelY(-10);
                     keyDown[2] = true;
                 }
                 if (key == KeyEvent.VK_DOWN) {
-                    tempObject.setVelY(5);
+                    tempObject.setVelY(10);
                     keyDown[3] = true;
                 }
             }

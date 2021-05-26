@@ -34,6 +34,8 @@ public class HUD {
        g.drawString("Score:" + getScore(), x, y);
        g.drawString("Score:" + getScore2(), z, u);
 
+       g.drawLine(Game.WIDTH/2, 0, Game.WIDTH/2, Game.HEIGHT);
+
     }
     public void setScore(int score) {
         this.score = this.score + score;

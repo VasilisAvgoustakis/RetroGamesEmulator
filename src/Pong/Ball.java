@@ -55,7 +55,7 @@ public class Ball extends GameObject{
 
                 if(getBounds().intersects(tempObject.getBounds())){
                     //collision code
-                    velX *= -1;
+                    velX *= -1.15;
 
                 }
             }
@@ -81,7 +81,7 @@ public class Ball extends GameObject{
                 handler.addObject(new Ball((Game.WIDTH / 2) - 5, (Game.HEIGHT / 2) - 5, ID.Ball, handler, this.hud));
 
         }
-        else if(x >= Game.WIDTH-50) {
+        else if(x >= Game.WIDTH-30) {
 
                 handler.removeObject(this);
                 hud.setScore(1);

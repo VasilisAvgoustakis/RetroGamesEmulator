@@ -8,7 +8,6 @@ public class Game extends Canvas implements Runnable {
 
     //frame dimensions
     public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
-    private NetLine netLine;
     private HUD hud;
     private Spawn spawn;
 
@@ -19,9 +18,6 @@ public class Game extends Canvas implements Runnable {
     //Handler variable
     private Handler handler;
 
-    //random instance
-    private Random r;
-
 
     //Game constructor; creates window and pases in frame details
     public Game(){
@@ -29,14 +25,10 @@ public class Game extends Canvas implements Runnable {
         this.addKeyListener(new KeyInput(handler));
 
         new Window(WIDTH, HEIGHT, "Welcome to Pong", this);
-        netLine = new NetLine();
+
 
         hud = new HUD(215, 15, 350, 15);
         spawn = new Spawn(handler, hud);
-
-
-
-        r = new Random();
 
             handler.addObject(new Player(10, 240, ID.Player));
             handler.addObject(new Player(600, 240, ID.Player2));
@@ -92,7 +84,6 @@ public class Game extends Canvas implements Runnable {
     }
     private void tick(){
         handler.tick();
-        netLine.tick();
         hud.tick();
 
 
@@ -111,7 +102,6 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         handler.render(g);
-        netLine.render(g);
         hud.render(g);
 
 
