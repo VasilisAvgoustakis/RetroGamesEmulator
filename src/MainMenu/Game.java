@@ -2,6 +2,7 @@ package MainMenu;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 import java.io.Serial;
 
 public class Game extends Canvas implements Runnable {
@@ -9,18 +10,18 @@ public class Game extends Canvas implements Runnable {
     @Serial
     private static final long serialVersionUID = -5430275344184810031L;
 
-    public static final int WIDTH = 800, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 1200, HEIGHT = WIDTH / 12 * 9;
     private Thread thread;
     private boolean running = false;
 
-    private Handler handler;
+    protected Handler handler;
 
     public Game(String gameTitle){
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
         new Window(WIDTH, HEIGHT, gameTitle, this);
-        handler.addObject(new Player(400, 400, ID.Player));
-        handler.addObject(new Player(600, 400, ID.Player2));
+        //handler.addObject(new Player(400, 400, ID.Player));
+        //handler.addObject(new Player(600, 400, ID.Player2));
     }
 
     public synchronized void start(){
@@ -67,11 +68,11 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
-    private void tick(){
+    protected void tick(){
         handler.tick();
     }
 
-    private void render(){
+    protected void render(){
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null){
             this.createBufferStrategy(3);
@@ -85,7 +86,7 @@ public class Game extends Canvas implements Runnable {
         g.dispose();
         bs.show();
     }
-    public static void main(String[] args){
-        new Game("Test Game");
+    public static void main(String[] args) throws IOException {
+        //new Game("Test Game");
     }
 }

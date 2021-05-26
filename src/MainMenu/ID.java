@@ -5,7 +5,7 @@ package MainMenu;
  */
 
 public enum ID {
-    Player(),
-    Player2(),
+    SRPlayer(),
+    SRPlayer2(),
     Enemy();
 }

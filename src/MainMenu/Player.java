@@ -1,10 +1,12 @@
 package MainMenu;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Player extends GameObject{
+public class Player extends GameObject implements ActionListener {
 
-    public Player(int x, int y, ID id){
+    public Player(int x, int y, ID id) {
         super(x, y, id);
     }
 
@@ -16,8 +18,11 @@ public class Player extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        if(id == ID.Player) g.setColor(Color.white);
-        else if(id == ID.Player2) g.setColor(Color.blue);
-        g.fillRect(x, y, 32, 32);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(y < 100) velY = 0;
     }
 }
