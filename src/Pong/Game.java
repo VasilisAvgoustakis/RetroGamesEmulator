@@ -9,8 +9,8 @@ public class Game extends Canvas implements Runnable {
     //frame dimensions
     public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
     private NetLine netLine;
-    private HUD hudPlayerOne;
-    private HUD hudPlayerTwo;
+    private HUD hud;
+    private Spawn spawn;
 
     //threat variables
     private Thread thread;
@@ -30,15 +30,17 @@ public class Game extends Canvas implements Runnable {
 
         new Window(WIDTH, HEIGHT, "Welcome to Pong", this);
         netLine = new NetLine();
-        hudPlayerOne = new HUD(215, 15);
-        hudPlayerTwo = new HUD(350, 15);
+
+        hud = new HUD(215, 15, 350, 15);
+        spawn = new Spawn(handler, hud);
+
 
 
         r = new Random();
 
             handler.addObject(new Player(10, 240, ID.Player));
             handler.addObject(new Player(600, 240, ID.Player2));
-            handler.addObject(new Ball(r.nextInt(550),r.nextInt(450), ID.Ball, handler));
+            handler.addObject(new Ball((Game.WIDTH/2)-5,(Game.HEIGHT/2) -5, ID.Ball, handler, hud));
 
 
 
@@ -60,7 +62,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
     //runs a gameloop (showing frames),
-    @Override
+
     public void run() {
         this.requestFocus();
         long lastTime = System.nanoTime();
@@ -82,7 +84,7 @@ public class Game extends Canvas implements Runnable {
             frames++;
             if(System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                //System.out.println("FPS: " + frames);
+                System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }
@@ -91,8 +93,9 @@ public class Game extends Canvas implements Runnable {
     private void tick(){
         handler.tick();
         netLine.tick();
-        hudPlayerOne.tick();
-        hudPlayerTwo.tick();
+        hud.tick();
+
+
 
     }
 
@@ -109,8 +112,8 @@ public class Game extends Canvas implements Runnable {
 
         handler.render(g);
         netLine.render(g);
-        hudPlayerOne.render(g);
-        hudPlayerTwo.render(g);
+        hud.render(g);
+
 
         g.dispose();
         bs.show();

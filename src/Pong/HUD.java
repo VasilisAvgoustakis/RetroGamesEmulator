@@ -6,11 +6,21 @@ public class HUD {
 
     private int x;
     private int y;
-    public  static int POINTS = 0;
+    private int z;
+    private int u;
 
-    public HUD(int x, int y) {
-       this.x = x;
-       this.y = y;
+
+
+    public int score = 0;
+    public int score2= 0;
+
+
+
+    public HUD(int x, int y, int z, int u) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.u = u;
 
     }
 
@@ -20,10 +30,25 @@ public class HUD {
 
 
     public void render(Graphics g) {
-        g.setColor(Color.green);
-        g.fillRect(x, y, 50, 30);
-        g.setColor(Color.cyan);
-        g.drawRect(x, y, 50, 30);
+
+       g.drawString("Score:" + getScore(), x, y);
+       g.drawString("Score:" + getScore2(), z, u);
+
+    }
+    public void setScore(int score) {
+        this.score = this.score + score;
+    }
+    public int getScore() {
+        return score;
+    }
+
+
+
+    public void setScore2(int score2) {
+        this.score2 = this.score2 + score2;
+    }
+    public int getScore2() {
+        return score2;
     }
 
 }

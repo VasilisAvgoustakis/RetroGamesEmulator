@@ -13,6 +13,6 @@ public class NetLine{
 
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.fillRect(305, 0, 8, Game.HEIGHT);
+        g.fillRect(305, 0, 4, Game.HEIGHT);
     }
 }
