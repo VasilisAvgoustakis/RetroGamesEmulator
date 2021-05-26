@@ -1,4 +1,4 @@
-package SpaceInvaders;
+package SpaceRace;
 
 import MainMenu.*;
 

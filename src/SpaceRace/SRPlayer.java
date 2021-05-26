@@ -1,4 +1,4 @@
-package SpaceInvaders;
+package SpaceRace;
 
 import MainMenu.ID;
 import MainMenu.Player;
@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
