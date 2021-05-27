@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SRPlayer extends Player implements ActionListener{
+public class SRPlayer extends Player {
     private final File PATH = new File("Images/SpaceRaceIcons/");
     private final BufferedImage SHIP = ImageIO.read(new File(PATH, "spaceship.png"));
 
@@ -27,10 +27,16 @@ public class SRPlayer extends Player implements ActionListener{
         g.drawImage(SHIP, x, y, 50, 50, Color.white, null);
     }
 
-
+    //originaly defined in GameObject Class as an abstract method. Here it is used
+    //to move the Player Object by adding to objects x and y vars
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if(y < 100) velY = 0;
-
+    public void tick() {
+        if(x < 1200) x += velX;
+        if(y > 4 && y < 776) y += velY;
+        else if(y == 0) y = 5;
+        else if(y > 775) y = 775;
     }
+
+
+
 }

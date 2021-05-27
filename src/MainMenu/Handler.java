@@ -43,6 +43,7 @@ public class Handler {
         this.players.add(player);
     }
 
+
     public void removeObject(GameObject object){
         this.objects.remove(object);
     }

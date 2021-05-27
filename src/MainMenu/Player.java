@@ -4,16 +4,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Player extends GameObject implements ActionListener {
+/**Player class extends GameObject. To be used as the parent Class of all Player classes
+ * within each game Package directory.*/
+public class Player extends GameObject {
 
+    //Constructor
     public Player(int x, int y, ID id) {
         super(x, y, id);
     }
-
+    //originaly defined in GameObject Class as an abstract method. Here it is used
+    //to move the Player Object by adding to objects x and y vars
     @Override
     public void tick() {
-        x += velX;
-        y += velY;
     }
 
     @Override
@@ -21,8 +23,5 @@ public class Player extends GameObject implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(y < 100) velY = 0;
-    }
+
 }

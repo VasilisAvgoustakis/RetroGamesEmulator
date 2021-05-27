@@ -21,7 +21,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     //declare Handler
-    protected Handler handler;
+    public Handler handler;
 
     /**Constructor of Class Game*/
     public Game(String gameTitle){

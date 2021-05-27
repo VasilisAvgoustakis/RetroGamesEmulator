@@ -34,7 +34,7 @@ public class Window extends Canvas{
         //Makes the close windows button to work by stopping the game from running.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Makes the window not resizable
-        frame.setResizable(false);
+        frame.setResizable(true);
         //Makes window spawn in screen middle
         frame.setLocationRelativeTo(null);
         //adds a class of type Game, given in the constructors parameters to the window
