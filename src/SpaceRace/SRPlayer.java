@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class SRPlayer extends Player implements ActionListener{
     private final File PATH = new File("Images/SpaceRaceIcons/");
-    private final BufferedImage SHIP = ImageIO.read(new File(PATH, "space-invaders.png"));
+    private final BufferedImage SHIP = ImageIO.read(new File(PATH, "spaceship.png"));
 
     public SRPlayer(int x, int y, ID id) throws IOException {
         super(x, y, id);
