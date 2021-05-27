@@ -7,5 +7,6 @@ package MainMenu;
 public enum ID {
     SRPlayer(),
     SRPlayer2(),
+    SRDebris(),
     Enemy();
 }

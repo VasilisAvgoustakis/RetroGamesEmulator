@@ -22,8 +22,6 @@ public class SRPlayer extends Player {
 
     @Override
     public void render(Graphics g) {
-        if(id == ID.SRPlayer) g.setColor(Color.black);
-        else if(id == ID.SRPlayer2) g.setColor(Color.blue);
         g.drawImage(SHIP, x, y, 50, 50, Color.white, null);
     }
 
@@ -31,7 +29,6 @@ public class SRPlayer extends Player {
     //to move the Player Object by adding to objects x and y vars
     @Override
     public void tick() {
-        if(x < 1200) x += velX;
         if(y > 4 && y < 776) y += velY;
         else if(y == 0) y = 5;
         else if(y > 775) y = 775;

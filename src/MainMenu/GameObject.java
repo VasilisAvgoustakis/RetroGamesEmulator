@@ -23,7 +23,7 @@ public abstract class GameObject{
 
     //abstract methods
     public abstract void tick();
-    public abstract void render(Graphics g);
+    public abstract void render(Graphics g) throws InterruptedException;
 
     //getter & setters
     public void setX(int x){

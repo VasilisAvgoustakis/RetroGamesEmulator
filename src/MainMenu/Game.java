@@ -83,7 +83,13 @@ public class Game extends Canvas implements Runnable {
                 tick();
                 delta--;
             }
-            if(running)render();
+            if(running) {
+                try {
+                    render();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             frames++;
 
             if(System.currentTimeMillis() - timer > 1000){
@@ -99,7 +105,7 @@ public class Game extends Canvas implements Runnable {
         handler.tick();
     }
 
-    protected void render(){
+    protected void render() throws InterruptedException {
         //The BufferStrategy class represents the mechanism with which
         //to organize complex memory on a particular Canvas or Window.
         BufferStrategy bs = this.getBufferStrategy();
