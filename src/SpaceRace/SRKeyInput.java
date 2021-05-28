@@ -30,6 +30,8 @@ public class SRKeyInput extends KeyInput{
                 //if(key == KeyEvent.VK_RIGHT) tempObject.setVelX(5);
                 //if(key == KeyEvent.VK_LEFT) tempObject.setVelX(-5);
             }
+            //exits the game
+            if(key == KeyEvent.VK_ESCAPE) System.exit(1);
         }
     }
 

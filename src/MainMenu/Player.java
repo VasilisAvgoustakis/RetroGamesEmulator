@@ -12,15 +12,23 @@ public class Player extends GameObject {
     public Player(int x, int y, ID id) {
         super(x, y, id);
     }
+
+
     //originaly defined in GameObject Class as an abstract method. Here it is used
     //to move the Player Object by adding to objects x and y vars
     @Override
     public void tick() {
+
     }
 
     @Override
     public void render(Graphics g) {
 
+    }
+
+    @Override
+    public Rectangle getBounds() {
+        return null;
     }
 
 

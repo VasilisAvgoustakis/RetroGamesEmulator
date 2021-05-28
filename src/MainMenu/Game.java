@@ -33,6 +33,14 @@ public class Game extends Canvas implements Runnable {
         new Window(WIDTH, HEIGHT, gameTitle, this);
     }
 
+    /**Stops objects from going off screen*/
+    public static int clamp(int var, int min, int max){
+        if(var >= max) return var = max;
+        else if(var <= min) return var = min;
+        else
+            return var;
+    }
+
     /**Starts the Game.
      * Making these methods synchronized has two effects:
      * First, it is not possible for two invocations of synchronized methods on the same object to interleave.
@@ -69,6 +77,8 @@ public class Game extends Canvas implements Runnable {
     }
     /**Is the beating heart of the game. Sets time and rhythm for renewing frame and objects.*/
     public void run(){
+        //automatically gives controls to the game window so that you dont have to click on it
+        this.requestFocus();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -101,7 +111,7 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
-    protected void tick(){
+    protected void tick() {
         handler.tick();
     }
 
@@ -130,6 +140,7 @@ public class Game extends Canvas implements Runnable {
         // or changing the display pointer (flipping).
         bs.show();
     }
+
     //public static void main(String[] args) throws IOException {
         //new Game("Test Game");
     //}
