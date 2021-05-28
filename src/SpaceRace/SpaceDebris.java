@@ -37,4 +37,9 @@ public class SpaceDebris extends GameObject {
     public Rectangle getBounds(){
         return new Rectangle(x, y, 5, 5 );
     }
+
+    @Override
+    public void hide() {
+        
+    }
 }

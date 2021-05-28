@@ -44,6 +44,11 @@ public class SRPlayer extends Player {
         return new Rectangle(x, y, 50, 50 );
     }
 
+    @Override
+    public void hide(){
+        y = 1200;
+    }
+
     public void collision(){
         for(int i = 0; i < handler.objects.size(); i++){
             GameObject tmpObject = handler.objects.get(i);
@@ -51,6 +56,7 @@ public class SRPlayer extends Player {
             if(tmpObject.getID() == ID.SRDebris){
                 if(getBounds().intersects(tmpObject.getBounds())){
                     //collision code: what happens when collision occurs
+                  
                     y = 775;
                 }
             }

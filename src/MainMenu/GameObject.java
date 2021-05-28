@@ -25,6 +25,7 @@ public abstract class GameObject{
     public abstract void tick();
     public abstract void render(Graphics g) throws InterruptedException;
     public abstract Rectangle getBounds();
+    public abstract void hide();
 
     //getter & setters
     public void setX(int x){

@@ -31,5 +31,10 @@ public class Player extends GameObject {
         return null;
     }
 
+    @Override
+    public void hide() {
+
+    }
+
 
 }
