@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class SpaceDebris extends GameObject {
 
     private String direction;
+    private int gameLevel = SpaceRaceGame.getGameLevel();
 
     public SpaceDebris (int x, int y, ID id, String direction) {
         super(x,y,id);
@@ -18,8 +19,8 @@ public class SpaceDebris extends GameObject {
     @Override
     public void tick() {
 
-        if(this.direction.equals("left")) x += 1;
-        if(this.direction.equals("right")) x -= 1;
+        if(this.direction.equals("left")) x += gameLevel;
+        if(this.direction.equals("right")) x -= gameLevel;
     }
 
     @Override
@@ -30,12 +31,12 @@ public class SpaceDebris extends GameObject {
         //g2d.draw(getBounds());
 
         g.setColor(Color.white);
-        g.fillOval(x, y, 5, 5);
+        g.fillOval(x, y, 7, 7);
     }
 
     @Override
     public Rectangle getBounds(){
-        return new Rectangle(x, y, 5, 5 );
+        return new Rectangle(x, y, 7, 7);
     }
 
     @Override

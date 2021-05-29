@@ -7,9 +7,11 @@ import java.awt.event.ActionListener;
 /**Player class extends GameObject. To be used as the parent Class of all Player classes
  * within each game Package directory.*/
 public class Player extends GameObject {
+    public Handler handler;
+    public int playerScore = 0;
 
     //Constructor
-    public Player(int x, int y, ID id) {
+    public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id);
     }
 
@@ -36,5 +38,12 @@ public class Player extends GameObject {
 
     }
 
+    public int getPlayerScore(){
+        return playerScore;
+    }
+
+    public void setPlayerScore(int value){
+        playerScore = value;
+    }
 
 }

@@ -15,13 +15,17 @@ public class Game extends Canvas implements Runnable {
     @Serial
     private static final long serialVersionUID = -5430275344184810031L;
 
+
+
     public static final int WIDTH = 1200, HEIGHT = WIDTH / 12 * 9;
     /*A thread is a thread of execution in a program. The Java Virtual Machine allows an
     application to have multiple threads of execution running concurrently.*/
     private Thread thread;
     private boolean running = false;
     //declare Handler
-    public Handler handler;
+    public static Handler handler;
+    public static int gameLevel = 1;
+    public static int gameTime = 0;
 
     /**Constructor of Class Game*/
     public Game(String gameTitle){
@@ -88,6 +92,7 @@ public class Game extends Canvas implements Runnable {
         while(running){
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
+            //System.out.println(delta);
             lastTime = now;
             while(delta >= 1){
                 tick();
@@ -140,6 +145,24 @@ public class Game extends Canvas implements Runnable {
         // or changing the display pointer (flipping).
         bs.show();
     }
+
+
+    public static int getGameLevel(){
+        return gameLevel;
+    }
+
+    public static int getGameTime(){
+        return gameTime;
+    }
+
+    public static void setGameLevel(int level){
+        gameLevel = level;
+    }
+
+    public static void setGameTime(int seconds){
+        gameTime = seconds;
+    }
+
 
     //public static void main(String[] args) throws IOException {
         //new Game("Test Game");

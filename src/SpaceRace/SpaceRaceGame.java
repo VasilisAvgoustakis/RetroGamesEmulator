@@ -11,6 +11,10 @@ import java.util.concurrent.TimeUnit;
 public class SpaceRaceGame extends Game {
 
     SRHUD hud;
+    long startTime = System.currentTimeMillis();
+    int tempTime;
+    Timer SRTimer;
+
 
     public SpaceRaceGame(String gameTitle) throws IOException, InterruptedException {
         super(gameTitle);
@@ -23,22 +27,31 @@ public class SpaceRaceGame extends Game {
         handler.addPlayer(new SRPlayer(300, 775, ID.SRPlayer, handler));
         handler.addPlayer(new SRPlayer(900, 775, ID.SRPlayer2, handler));
 
+        //start timer
+        //SRTimer = new Timer(60);
+
         //add debris
         int max = 760;
         int min = 5;
         int randomY1, randomY2;
         while (true) {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(2000 / gameLevel);
             randomY1 = (int) (Math.random() * ((max - min) + 1));
             randomY2 = (int) (Math.random() * ((max - min) + 1));
             handler.addObject(new SpaceDebris(0, randomY1, ID.SRDebris, "left"));
             handler.addObject(new SpaceDebris(1200, randomY2, ID.SRDebris, "right"));
         }
     }
+
     @Override
     public void tick() {
         super.tick();
         hud.tick();
+        long elapsedTime = System.currentTimeMillis();
+        int elapsedSec =(int) ((elapsedTime - startTime) / 1000F);
+        //if(((double)gameTime + 1.0) < )
+        setGameTime(elapsedSec);
+        //System.out.println(SRTimer.getCountdownSec());
     }
 
     @Override
@@ -67,6 +80,13 @@ public class SpaceRaceGame extends Game {
         //Makes the next available buffer visible by either copying the memory (blitting)
         // or changing the display pointer (flipping).
         bs.show();
+    }
+
+
+
+
+    public static Handler getHandler(){
+        return handler;
     }
 
     public static void main (String[]args) throws IOException, InterruptedException {
