@@ -20,8 +20,18 @@ public class SpaceRaceGame extends Game {
         super(gameTitle);
         this.addKeyListener(new SRKeyInput(handler));
 
+
         //add hud
         hud = new SRHUD();
+
+
+        //load sounds and music
+        AudioPlayer.load();
+
+        //play ambient music
+        AudioPlayer.getMusic("ambient").loop();
+
+
 
         //add players
         handler.addPlayer(new SRPlayer(300, 775, ID.SRPlayer, handler));

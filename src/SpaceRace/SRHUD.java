@@ -32,8 +32,6 @@ public class SRHUD {
             //System.out.println(timeBarHeight + "   " + timeBarY);
         }
 
-
-
         for(int i = 0; i < handler.players.size();i++) {
             Player tmpPlayer = handler.players.get(i);
 
@@ -66,6 +64,10 @@ public class SRHUD {
 
         //announce result when time runs out
         if(timeBarHeight < 45){
+
+            //stop ambient music
+            AudioPlayer.getMusic("ambient").stop();
+            AudioPlayer.getSound("victory").play();
 
             Font currentFont3 = g.getFont();
             Font newFont3 = currentFont.deriveFont(currentFont.getSize() * 7.4F);

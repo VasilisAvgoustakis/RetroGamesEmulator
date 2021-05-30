@@ -71,6 +71,9 @@ public class SRPlayer extends Player {
                     //collision code: what happens when collision occurs
                   
                     y = 775;
+
+                    //play collision sound
+                    AudioPlayer.getSound("collision").play();
                 }
             }
 
