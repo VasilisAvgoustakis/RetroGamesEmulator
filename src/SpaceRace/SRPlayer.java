@@ -44,6 +44,11 @@ public class SRPlayer extends Player {
             playerScore++;
             SpaceRaceGame.setGameLevel(playerScore + 1);
         }
+
+        if(SRHUD.getTimeBarHeight() < 45) {
+            y = Game.clamp(y, 775, 775);
+        }
+
     }
 
     @Override

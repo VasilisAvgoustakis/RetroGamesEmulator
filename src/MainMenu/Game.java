@@ -21,7 +21,7 @@ public class Game extends Canvas implements Runnable {
     /*A thread is a thread of execution in a program. The Java Virtual Machine allows an
     application to have multiple threads of execution running concurrently.*/
     private Thread thread;
-    private boolean running = false;
+    private static boolean running = false;
     //declare Handler
     public static Handler handler;
     public static int gameLevel = 1;
@@ -155,6 +155,8 @@ public class Game extends Canvas implements Runnable {
         return gameTime;
     }
 
+    public static boolean getRunningStatus(){return running;}
+
     public static void setGameLevel(int level){
         gameLevel = level;
     }
@@ -162,6 +164,8 @@ public class Game extends Canvas implements Runnable {
     public static void setGameTime(int seconds){
         gameTime = seconds;
     }
+
+    public static void setRunningStatus(boolean value){ running = value;}
 
 
     //public static void main(String[] args) throws IOException {

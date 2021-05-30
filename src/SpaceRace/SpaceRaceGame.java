@@ -52,6 +52,9 @@ public class SpaceRaceGame extends Game {
         //if(((double)gameTime + 1.0) < )
         setGameTime(elapsedSec);
         //System.out.println(SRTimer.getCountdownSec());
+
+
+
     }
 
     @Override
@@ -91,7 +94,6 @@ public class SpaceRaceGame extends Game {
 
     public static void main (String[]args) throws IOException, InterruptedException {
         new SpaceRaceGame("Space Race");
-
     }
 
 }

@@ -15,9 +15,10 @@ public class SRHUD {
     private int gameLevel;
 
 
-    private int timeBarHeight = 240;
+    private static int timeBarHeight = 240;
     private int timeBarY = 635;
     private int hudTime = 0;
+    private String result = "%s won this Game!";
 
     Handler handler = SpaceRaceGame.getHandler();
     public void tick() {
@@ -28,8 +29,10 @@ public class SRHUD {
             timeBarHeight -= 3;
             timeBarY += 3;
             hudTime++;
-            System.out.println(timeBarHeight + "   " + timeBarY);
+            //System.out.println(timeBarHeight + "   " + timeBarY);
         }
+
+
 
         for(int i = 0; i < handler.players.size();i++) {
             Player tmpPlayer = handler.players.get(i);
@@ -53,13 +56,36 @@ public class SRHUD {
         Font currentFont = g.getFont();
         Font newFont = currentFont.deriveFont(currentFont.getSize() * 5.4F);
         g.setFont(newFont);
-        g.drawString(String.valueOf(scoreP1), 530, 800);
-        g.drawString(String.valueOf(scoreP2), 625, 800);
+        printResultString(g, String.valueOf(scoreP1), 100, 500, 800);
+        printResultString(g, String.valueOf(scoreP2), 100, 610, 800);
         //level indicator
         Font currentFont2 = g.getFont();
         Font newFont2 = currentFont.deriveFont(currentFont.getSize() * 3.4F);
         g.setFont(newFont2);
         g.drawString(String.valueOf("Level:  " + gameLevel), 15, 30);
+
+        //announce result when time runs out
+        if(timeBarHeight < 45){
+
+            Font currentFont3 = g.getFont();
+            Font newFont3 = currentFont.deriveFont(currentFont.getSize() * 7.4F);
+            g.setFont(newFont3);
+            if(scoreP1 > scoreP2) {
+                printResultString(g, "Player 1 won this Game!", 800, 200, 400);
+            }
+            else if(scoreP2 > scoreP1){
+                printResultString(g, "Player 2 won this Game!", 800, 200, 400);
+            }
+            else printResultString(g, "That's a draw!", 800, 200, 400);;
+        }
+    }
+
+    //The following code segment will center a String by passing the startin x,y and the available width.
+    private void printResultString(Graphics g, String s, int width, int XPos, int YPos) {
+        Graphics2D g2d = (Graphics2D) g;
+        int stringLen = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
+        int start = width / 2 - stringLen / 2;
+        g2d.drawString(s, start + XPos, YPos);
     }
 
     public int getScoreP1(){
@@ -72,6 +98,10 @@ public class SRHUD {
 
     public int getLevel(){
         return gameLevel;
+    }
+
+    public static int getTimeBarHeight(){
+        return timeBarHeight;
     }
 
     public void setScoreP1(int value){
