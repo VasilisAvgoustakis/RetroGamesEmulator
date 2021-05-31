@@ -11,10 +11,12 @@ import java.io.IOException;
 public class SRPlayer extends Player {
     private final File PATH = new File("Images/SpaceRaceIcons/");
     private final BufferedImage SHIP = ImageIO.read(new File(PATH, "spaceship.png"));
-    Handler handler;
+    private int gameLevel = SpaceRaceGame.getGameLevel();
+
+
 
     public SRPlayer(int x, int y, ID id, Handler handler) throws IOException {
-        super(x, y, id);
+        super(x, y, id, handler);
         this.handler = handler;
     }
 
@@ -37,12 +39,23 @@ public class SRPlayer extends Player {
 
         y = Game.clamp(y, 0, Game.HEIGHT - 75);
         collision();
+        if(y == 0){
+            y = 775;
+            playerScore++;
+            SpaceRaceGame.setGameLevel(playerScore + 1);
+        }
+
+        if(SRHUD.getTimeBarHeight() < 45) {
+            y = Game.clamp(y, 775, 775);
+        }
+
     }
 
     @Override
     public Rectangle getBounds(){
         return new Rectangle(x, y, 50, 50 );
     }
+
 
     @Override
     public void hide(){
@@ -58,6 +71,9 @@ public class SRPlayer extends Player {
                     //collision code: what happens when collision occurs
                   
                     y = 775;
+
+                    //play collision sound
+                    AudioPlayer.getSound("collision").play();
                 }
             }
 
