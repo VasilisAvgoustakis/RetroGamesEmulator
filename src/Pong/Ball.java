@@ -14,20 +14,23 @@ public class Ball extends GameObject{
  private HUD hud;
 
 
+
  //constructor for a Ball Object
     public Ball(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
 
-        velX = 3;
-        velY = 3;
+        double angle = 2 * Math.PI * Math.random();
+        velX = (float) (Math.cos(angle) * 3);
+        velY = (float) (Math.sin(angle) * 3);
     }
     public Ball(int x, int y, ID id, Handler handler, HUD hud){
         super(x, y, id);
         this.handler = handler;
         this.hud = hud;
-        velX = 3;
-        velY = 3;
+        double angle = 2 * Math.PI * Math.random()+1;
+        velX = (float) (Math.cos(angle) * 3);
+        velY = (float) (Math.sin(angle) * 3);
 
     }
 
@@ -51,11 +54,16 @@ public class Ball extends GameObject{
 
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
-            if(tempObject.getId() == ID.Player || tempObject.getId() == ID.Player2){
+            if(tempObject.getId() == ID.Player || tempObject.getId() == ID.Player2 || tempObject.getId() == ID.EnemyAI){
 
                 if(getBounds().intersects(tempObject.getBounds())){
                     //collision code
-                    velX *= -1.15;
+                    if(velX < 0){
+                        velX = (float) ((velX - 0.25) * (-1));
+                    }
+                    else if(velX > 0){
+                        velX = (float) ((velX + 0.25) * (-1));
+                    }
 
                 }
             }
@@ -96,5 +104,12 @@ public class Ball extends GameObject{
         g.setColor(Color.white);
         g.fillRect(x, y, 10, 10);
     }
+
+//    public float calcPositionX(int x, int y, int velX, int velY){
+//
+//        float pos = velX
+//
+//        return
+//    }
     }
 

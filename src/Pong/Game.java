@@ -31,9 +31,10 @@ public class Game extends Canvas implements Runnable {
         spawn = new Spawn(handler, hud);
 
             handler.addObject(new Player(10, 240, ID.Player));
-            handler.addObject(new Player(600, 240, ID.Player2));
-            handler.addObject(new Ball((Game.WIDTH/2)-5,(Game.HEIGHT/2) -5, ID.Ball, handler, hud));
+//            handler.addObject(new Player(600, 240, ID.Player2));
 
+            handler.addObject(new Ball((Game.WIDTH/2)-5,(Game.HEIGHT/2) -5, ID.Ball, handler, hud));
+            handler.addObject(new EnemyAI(600, 240, ID.EnemyAI, handler));
 
 
     }
