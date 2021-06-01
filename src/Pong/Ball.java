@@ -51,11 +51,17 @@ public class Ball extends GameObject{
 
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
-            if(tempObject.getId() == ID.Player || tempObject.getId() == ID.Player2){
+            if(tempObject.getId() == ID.Player || tempObject.getId() == ID.Player2 || tempObject.getId() == ID.EnemyAI){
 
                 if(getBounds().intersects(tempObject.getBounds())){
                     //collision code
-                    velX *= -1.15;
+
+                    if(velX < 0){
+                        velX = (float) ((velX -0.5) *(-1));
+                    }
+                    else{
+                        velX = (float) ((velX + 0.5) *(-1));
+                    }
 
                 }
             }
