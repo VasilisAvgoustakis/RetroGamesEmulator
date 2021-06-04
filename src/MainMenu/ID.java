@@ -8,5 +8,11 @@ public enum ID {
     SRPlayer(),
     SRPlayer2(),
     SRDebris(),
+    SIPlayer(),
+    AlienShip1(),
+    AlienShip2(),
+    AlienShip3(),
+    AlienUfo(),
+    SIProjectile,
     Enemy();
 }

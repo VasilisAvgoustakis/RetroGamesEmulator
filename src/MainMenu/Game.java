@@ -21,7 +21,7 @@ public class Game extends Canvas implements Runnable {
     /*A thread is a thread of execution in a program. The Java Virtual Machine allows an
     application to have multiple threads of execution running concurrently.*/
     private Thread thread;
-    private static boolean running = false;
+    protected static boolean running = false;
     //declare Handler
     public static Handler handler;
     public static int gameLevel = 1;
@@ -81,39 +81,7 @@ public class Game extends Canvas implements Runnable {
     }
     /**Is the beating heart of the game. Sets time and rhythm for renewing frame and objects.*/
     public void run(){
-        //automatically gives controls to the game window so that you dont have to click on it
-        this.requestFocus();
-        long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
-        double delta = 0;
-        long timer = System.currentTimeMillis();
-        int frames = 0;
-        while(running){
-            long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            //System.out.println(delta);
-            lastTime = now;
-            while(delta >= 1){
-                tick();
-                delta--;
-            }
-            if(running) {
-                try {
-                    render();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            frames++;
 
-            if(System.currentTimeMillis() - timer > 1000){
-                timer += 1000;
-                //System.out.println("FPS:   " + frames);
-                frames = 0;
-            }
-        }
-        stop();
     }
 
     protected void tick() {

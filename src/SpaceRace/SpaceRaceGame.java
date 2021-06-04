@@ -13,8 +13,6 @@ public class SpaceRaceGame extends Game {
     SRHUD hud;
     long startTime = System.currentTimeMillis();
 
-
-
     public SpaceRaceGame(String gameTitle) throws IOException, InterruptedException {
         super(gameTitle);
         this.addKeyListener(new SRKeyInput(handler));
@@ -23,14 +21,11 @@ public class SpaceRaceGame extends Game {
         //add hud
         hud = new SRHUD();
 
-
         //load sounds and music
         AudioPlayer.load();
 
         //play ambient music
         AudioPlayer.getMusic("ambient").loop();
-
-
 
         //add players
         handler.addPlayer(new SRPlayer((SpaceRaceGame.WIDTH / 12 * 3),
@@ -45,13 +40,15 @@ public class SpaceRaceGame extends Game {
         int max = SpaceRaceGame.WIDTH / 12 * 7; //max y to spawn debris
         int min = (int)(SpaceRaceGame.WIDTH / 12 * 0.05); //min y to spawn debris
         int randomY1, randomY2;
-        while (true) {
+        start();
+        while (SRHUD.getTimeBarHeight() > (int)(SpaceRaceGame.WIDTH / 12 * 0.24)) {
             TimeUnit.MILLISECONDS.sleep(2000 / gameLevel);
             randomY1 = (int) (Math.random() * ((max - min) + 1));
             randomY2 = (int) (Math.random() * ((max - min) + 1));
             handler.addObject(new SpaceDebris(0, randomY1, ID.SRDebris, "left"));
             handler.addObject(new SpaceDebris(1200, randomY2, ID.SRDebris, "right"));
         }
+
     }
 
     @Override
@@ -96,7 +93,43 @@ public class SpaceRaceGame extends Game {
         bs.show();
     }
 
+    /**Is the beating heart of the game. Sets time and rhythm for renewing frame and objects.*/
+    @Override
+    public void run(){
+        //automatically gives controls to the game window so that you dont have to click on it
+        this.requestFocus();
+        long lastTime = System.nanoTime();
+        double amountOfTicks = 60.0;
+        double ns = 1000000000 / amountOfTicks;
+        double delta = 0;
+        long timer = System.currentTimeMillis();
+        int frames = 0;
+        while(running){
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
+            //System.out.println(delta);
+            lastTime = now;
+            while(delta >= 1){
+                tick();
+                delta--;
+            }
+            if(running) {
+                try {
+                    render();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            frames++;
 
+            if(System.currentTimeMillis() - timer > 1000){
+                timer += 1000;
+                //System.out.println("FPS:   " + frames);
+                frames = 0;
+            }
+        }
+        stop();
+    }
 
 
     public static Handler getHandler(){

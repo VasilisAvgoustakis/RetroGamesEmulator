@@ -42,7 +42,7 @@ public class Window extends Canvas{
         //makes the window visible
         frame.setVisible(true);
         //starts the game by using the start method defined in class Game
-        game.start();
+        //game.start();
     }
 
 }
