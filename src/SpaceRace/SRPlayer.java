@@ -45,7 +45,7 @@ public class SRPlayer extends Player {
             SpaceRaceGame.setGameLevel(playerScore + 1);
         }
 
-        if(SRHUD.getTimeBarHeight() < 45) {
+        if(SRHUD.getTimeBarHeight() < (int)(SpaceRaceGame.WIDTH / 12 * 0.24)) {
             y = Game.clamp(y, 775, 775);
         }
 
@@ -56,11 +56,6 @@ public class SRPlayer extends Player {
         return new Rectangle(x, y, 50, 50 );
     }
 
-
-    @Override
-    public void hide(){
-        y = 1200;
-    }
 
     public void collision(){
         for(int i = 0; i < handler.objects.size(); i++){

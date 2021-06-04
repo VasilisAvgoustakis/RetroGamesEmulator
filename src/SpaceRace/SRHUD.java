@@ -8,17 +8,14 @@ import java.awt.*;
 
 public class SRHUD {
 
-
-
     private int scoreP1 = 0;
     private int scoreP2 = 0;
     private int gameLevel;
 
 
     private static int timeBarHeight = 240;
-    private int timeBarY = 635;
+    private int timeBarY = SpaceRaceGame.HEIGHT - timeBarHeight;
     private int hudTime = 0;
-    private String result = "%s won this Game!";
 
     Handler handler = SpaceRaceGame.getHandler();
     public void tick() {
@@ -27,7 +24,7 @@ public class SRHUD {
 
         if(hudTime != SpaceRaceGame.getGameTime()) {
             timeBarHeight -= 3;
-            timeBarY += 3;
+            timeBarY += 3 ;
             hudTime++;
             //System.out.println(timeBarHeight + "   " + timeBarY);
         }
@@ -54,19 +51,26 @@ public class SRHUD {
         Font currentFont = g.getFont();
         Font newFont = currentFont.deriveFont(currentFont.getSize() * 5.4F);
         g.setFont(newFont);
-        printResultString(g, String.valueOf(scoreP1), 100, 500, 800);
-        printResultString(g, String.valueOf(scoreP2), 100, 610, 800);
+        printResultString(g, String.valueOf(scoreP1), 100,
+                             SpaceRaceGame.WIDTH / 12 * 5,
+                             (int)(SpaceRaceGame.WIDTH / 12 * 7.5));
+        printResultString(g, String.valueOf(scoreP2), 100,
+                            (int)(SpaceRaceGame.WIDTH / 12 * 6.1),
+                            (int)(SpaceRaceGame.WIDTH / 12 * 7.5));
         //level indicator
         Font currentFont2 = g.getFont();
         Font newFont2 = currentFont.deriveFont(currentFont.getSize() * 3.4F);
         g.setFont(newFont2);
-        g.drawString(String.valueOf("Level:  " + gameLevel), 15, 30);
+        g.drawString(String.valueOf("Level:  " + gameLevel), (int)(SpaceRaceGame.WIDTH / 12 * 0.15),
+                                    (int)(SpaceRaceGame.WIDTH / 12 * 0.4));
 
         //announce result when time runs out
-        if(timeBarHeight < 45){
+        if(timeBarHeight < (int)(SpaceRaceGame.WIDTH / 12 * 0.24)){
 
             //stop ambient music
             AudioPlayer.getMusic("ambient").stop();
+            //play victory theme
+            //TODO fix victory music
             AudioPlayer.getSound("victory").play();
 
             Font currentFont3 = g.getFont();

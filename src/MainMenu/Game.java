@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable {
 
 
 
-    public static final int WIDTH = 1200, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 1200, HEIGHT = WIDTH / 12 * 8;
     /*A thread is a thread of execution in a program. The Java Virtual Machine allows an
     application to have multiple threads of execution running concurrently.*/
     private Thread thread;

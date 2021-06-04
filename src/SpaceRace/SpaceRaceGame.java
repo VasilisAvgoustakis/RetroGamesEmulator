@@ -12,8 +12,7 @@ public class SpaceRaceGame extends Game {
 
     SRHUD hud;
     long startTime = System.currentTimeMillis();
-    int tempTime;
-    Timer SRTimer;
+
 
 
     public SpaceRaceGame(String gameTitle) throws IOException, InterruptedException {
@@ -34,15 +33,17 @@ public class SpaceRaceGame extends Game {
 
 
         //add players
-        handler.addPlayer(new SRPlayer(300, 775, ID.SRPlayer, handler));
-        handler.addPlayer(new SRPlayer(900, 775, ID.SRPlayer2, handler));
+        handler.addPlayer(new SRPlayer((SpaceRaceGame.WIDTH / 12 * 3),
+                        (int)(SpaceRaceGame.WIDTH / 12 * 7.75), ID.SRPlayer, handler));
+        handler.addPlayer(new SRPlayer(SpaceRaceGame.WIDTH / 12 * 9,
+                        (int)(SpaceRaceGame.WIDTH / 12 * 7.75), ID.SRPlayer2, handler));
 
         //start timer
         //SRTimer = new Timer(60);
 
         //add debris
-        int max = 760;
-        int min = 5;
+        int max = SpaceRaceGame.WIDTH / 12 * 7; //max y to spawn debris
+        int min = (int)(SpaceRaceGame.WIDTH / 12 * 0.05); //min y to spawn debris
         int randomY1, randomY2;
         while (true) {
             TimeUnit.MILLISECONDS.sleep(2000 / gameLevel);
