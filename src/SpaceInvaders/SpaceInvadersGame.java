@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class SpaceInvadersGame extends Game {
 
-    private int alienColumns = 10;
+    private int alienColumns = 16;
     private int alienRows = 5;
     private int initX = (int)(SpaceInvadersGame.WIDTH / 12 * 2.5);
     private int initY = (int)(SpaceInvadersGame.WIDTH / 12 );
@@ -82,7 +82,7 @@ public class SpaceInvadersGame extends Game {
             handler.addObject(new AlienShip(initX,
                     initY, ID.AlienShip3));
             alienColumns--;
-            initX += 70;
+            initX += 50;
             initY = originalY;
         }
     }
