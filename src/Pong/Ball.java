@@ -65,7 +65,7 @@ public class Ball extends GameObject{
                 }
             }
         }
-        if(y <= 0 || y >= Game.HEIGHT-50) {
+        if(y <= 0 || y >= PongGame.HEIGHT-50) {
             velY *= -1;
         }
         else if(hud.getScore2() == 5){
@@ -83,14 +83,14 @@ public class Ball extends GameObject{
 
                 handler.removeObject(this);
                 hud.setScore2(1);
-                handler.addObject(new Ball((Game.WIDTH / 2) - 5, (Game.HEIGHT / 2) - 5, ID.Ball, handler, this.hud));
+                handler.addObject(new Ball((PongGame.WIDTH / 2) - 5, (PongGame.HEIGHT / 2) - 5, ID.Ball, handler, this.hud));
 
         }
-        else if(x >= Game.WIDTH-30) {
+        else if(x >= PongGame.WIDTH-30) {
 
                 handler.removeObject(this);
                 hud.setScore(1);
-                handler.addObject(new Ball((Game.WIDTH/2)-5,(Game.HEIGHT/2) -5, ID.Ball, handler, this.hud));
+                handler.addObject(new Ball((PongGame.WIDTH/2)-5,(PongGame.HEIGHT/2) -5, ID.Ball, handler, this.hud));
 
         }
 

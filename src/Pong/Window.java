@@ -7,7 +7,7 @@ public class Window extends Canvas {
 
 
     //window constructor from JFrame sets all the attributes and calls the game
-    public Window(int width, int height, String title, Game game){
+    public Window(int width, int height, String title, PongGame game){
 
         JFrame frame = new JFrame(title);
 

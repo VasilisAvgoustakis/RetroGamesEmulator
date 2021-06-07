@@ -27,7 +27,7 @@ public class EnemyAI extends GameObject{
 
 
 
-            y = Game.clamp(y, 3, Game.HEIGHT-120);
+            y = PongGame.clamp(y, 3, PongGame.HEIGHT-120);
 
 
     }
@@ -52,13 +52,13 @@ public class EnemyAI extends GameObject{
 
                 }
                 else if(ball > this.y){
-                    if(this.y <= Game.HEIGHT - 125){
+                    if(this.y <= PongGame.HEIGHT - 125){
                         this.y += 3;
                     }
                 }
                 else if(this.y < this.y +75){
                     if(this.y >= 20){
-                        this.y -= 2;
+                        this.y -= 3;
                     }
                 }
             }

@@ -38,7 +38,7 @@ public class HUD {
        g.drawString("Score:" + getScore2(), z, u);
 
        g.setColor(Color.WHITE);
-       g.drawLine(Game.WIDTH/2, 0, Game.WIDTH/2, Game.HEIGHT);
+       g.drawLine(PongGame.WIDTH/2, 0, PongGame.WIDTH/2, PongGame.HEIGHT);
 
 
     }

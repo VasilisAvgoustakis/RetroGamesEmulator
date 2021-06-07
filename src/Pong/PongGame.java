@@ -2,9 +2,8 @@ package Pong;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.Random;
 
-public class Game extends Canvas implements Runnable {
+public class PongGame extends Canvas implements Runnable {
 
     //frame dimensions
     public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
@@ -20,8 +19,8 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
 
 
-    //Game constructor; creates window and pases in frame details
-    public Game(){
+    //PongGame constructor; creates window and pases in frame details
+    public PongGame(){
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
 
@@ -33,7 +32,7 @@ public class Game extends Canvas implements Runnable {
 
             handler.addObject(new Player(10, 240, ID.Player));
            // handler.addObject(new Player(600, 240, ID.Player2));
-            handler.addObject(new Ball((Game.WIDTH/2)-5,(Game.HEIGHT/2) -5, ID.Ball, handler, hud));
+            handler.addObject(new Ball((PongGame.WIDTH/2)-5,(PongGame.HEIGHT/2) -5, ID.Ball, handler, hud));
 
             handler.addObject(new EnemyAI(600, 240, ID.EnemyAI, handler));
 

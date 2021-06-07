@@ -21,7 +21,7 @@ public class Player extends GameObject{
         x += velX;
         y += velY;
 
-        y = Game.clamp(y, 3, Game.HEIGHT-120);
+        y = PongGame.clamp(y, 3, PongGame.HEIGHT-120);
 
     }
 
