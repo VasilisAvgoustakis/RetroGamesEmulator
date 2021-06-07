@@ -42,8 +42,7 @@ public class Ball extends GameObject{
 
         collision();
 
-        //adding a trail
-        handler.addObject(new Trail(x,y, ID.Trail, Color.white, handler,0.08f));
+
 
     }
     private void collision(){
@@ -100,7 +99,7 @@ public class Ball extends GameObject{
 //Dimensions of the Ball
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.fillRect(x, y, 10, 10);
+        g.fillRect(x, y, 20, 20);
     }
     }
 

@@ -58,7 +58,7 @@ public class EnemyAI extends GameObject{
                 }
                 else if(this.y < this.y +75){
                     if(this.y >= 20){
-                        this.y -=3;
+                        this.y -= 2;
                     }
                 }
             }

@@ -56,10 +56,12 @@ public class Game extends Canvas implements Runnable {
             e.printStackTrace();
         }
     }
+
     //runs a gameloop (showing frames),
 
     public void run() {
         this.requestFocus();
+
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;

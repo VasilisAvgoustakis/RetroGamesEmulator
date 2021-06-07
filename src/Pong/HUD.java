@@ -31,10 +31,15 @@ public class HUD {
 
     public void render(Graphics g) {
 
+       g.setColor(Color.BLUE);
        g.drawString("Score:" + getScore(), x, y);
+
+       g.setColor(Color.RED);
        g.drawString("Score:" + getScore2(), z, u);
 
+       g.setColor(Color.WHITE);
        g.drawLine(Game.WIDTH/2, 0, Game.WIDTH/2, Game.HEIGHT);
+
 
     }
     public void setScore(int score) {

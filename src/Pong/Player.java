@@ -31,7 +31,7 @@ public class Player extends GameObject{
 
 
         if(id == ID.Player){
-            g.setColor(Color.white);
+            g.setColor(Color.BLUE);
         }
         else if(id == ID.Player2){
             g.setColor(Color.red);
