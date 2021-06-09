@@ -53,10 +53,7 @@ public class SIPlayer extends Player {
 
     }
 
-    @Override
-    public Rectangle getBounds(){
-        return new Rectangle(x, y, 50, 50 );
-    }
+
 
     public void collision(){
         for(int i = 0; i < handler.objects.size(); i++){
@@ -74,5 +71,30 @@ public class SIPlayer extends Player {
             }
 
         }
+    }
+
+    //shoots projectile to enemies
+    public void shoot(){
+        for(int i = 0; i < SpaceInvadersGame.handler.players.size(); i++) {
+            Player tempPlayer = SpaceInvadersGame.handler.players.get(i);
+            if (tempPlayer.getID() == ID.SIPlayer) {
+                SpaceInvadersGame.handler.objects.add(
+                        new SIProjectile(tempPlayer.getX() + 23 , tempPlayer.getY() - 20, ID.SIProjectile)
+                );
+                //System.out.println("Piouuu");
+            }
+        }
+    }
+
+    @Override
+    public Rectangle getBounds(){
+        return new Rectangle(x, y, 50, 50 );
+    }
+
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
     }
 }

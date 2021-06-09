@@ -51,12 +51,6 @@ public class SRPlayer extends Player {
 
     }
 
-    @Override
-    public Rectangle getBounds(){
-        return new Rectangle(x, y, 50, 50 );
-    }
-
-
     public void collision(){
         for(int i = 0; i < handler.objects.size(); i++){
             GameObject tmpObject = handler.objects.get(i);
@@ -64,7 +58,7 @@ public class SRPlayer extends Player {
             if(tmpObject.getID() == ID.SRDebris){
                 if(getBounds().intersects(tmpObject.getBounds())){
                     //collision code: what happens when collision occurs
-                  
+
                     y = 775;
 
                     //play collision sound
@@ -74,5 +68,16 @@ public class SRPlayer extends Player {
 
         }
     }
+
+    @Override
+    public Rectangle getBounds(){
+        return new Rectangle(x, y, 50, 50 );
+    }
+
+    public int getXPosition(){
+        return x;
+    }
+
+
 
 }

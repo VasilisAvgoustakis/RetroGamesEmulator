@@ -84,16 +84,16 @@ public class SpaceInvadersGame extends Game implements MouseMotionListener {
         int columnNum = 1;
         while(columns != 0) {
             handler.addObject(new AlienShip(initX,
-                    initY, ID.AlienShip2, columnNum));
+                    initY, ID.AlienShip2,1, columnNum));
             initY += 60;
             handler.addObject(new AlienShip(initX,
-                    initY, ID.AlienShip2, columnNum));
+                    initY, ID.AlienShip2, 2, columnNum));
             initY += 60;
             handler.addObject(new AlienShip(initX,
-                    initY, ID.AlienShip3, columnNum));
+                    initY, ID.AlienShip3, 3, columnNum));
             initY += 60;
             handler.addObject(new AlienShip(initX,
-                    initY, ID.AlienShip3,columnNum));
+                    initY, ID.AlienShip3,4, columnNum));
             columns--;
             columnNum++;
             initX += 50;
@@ -117,6 +117,6 @@ public class SpaceInvadersGame extends Game implements MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println("x = " + e.getX() + " y = " + e.getY());
+        //System.out.println("x = " + e.getX() + " y = " + e.getY());
     }
 }

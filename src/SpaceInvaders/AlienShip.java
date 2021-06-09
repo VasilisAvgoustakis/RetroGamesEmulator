@@ -24,16 +24,18 @@ public class AlienShip extends GameObject {
     private int originalX;
     private static int shipTotal = 1;
     private int shipNum = 1;
-    //TODO find the formula to assign the right column number to every ship object
-    private int columnNum;
+    private int rowNum, columnNum, pixelsToMove;
+    private int rowModifier = 1;
+    private int movingSpeed = 20;
 
 
-    public AlienShip(int x, int y, ID id, int column) throws IOException {
+    public AlienShip(int x, int y, ID id, int row, int column) throws IOException {
         super(x, y, id);
         originalX = x;
+        rowNum = row;
         columnNum = column;
         shipNum = shipTotal;
-        System.out.println("Column: " + columnNum + " ship: " + shipNum);
+        //System.out.println("Column: " + columnNum + " ship: " + shipNum);
         shipTotal++;
 
     }
@@ -42,19 +44,39 @@ public class AlienShip extends GameObject {
     public void tick() {
         int randomMoveFactor = (int) (Math.random() * 2 + 1);
         moveCounter++;
+
+        //moving to the right
         if(moveCounter % 10 == 0 && !bounce) {
-            x += 4 + randomMoveFactor;
+            //alternating the speed for the whole row
+            if((rowNum + rowModifier) % 2 == 0){
+                pixelsToMove = 4; //+ randomMoveFactor;
+                rowModifier -= 1;
+            }else {
+                pixelsToMove = 2;// + randomMoveFactor;
+                rowModifier += 1;
+            }
+            x += pixelsToMove;
             if(x >= (((SpaceInvadersGame.WIDTH - 50)- ((SpaceInvadersGame.getAlienArmyColumns()
                     - columnNum) * 50)))){
                 y += 60;
+                movingSpeed -= 2;
                 bounce = true;
             }
         }
-
+        //moving to the left
         if(moveCounter % 10 == 0 && bounce) {
-            x -= 4 - randomMoveFactor;
+            //alternating the speed for the whole row
+            if((rowNum + rowModifier) % 2 == 0){
+                pixelsToMove = 4; // + randomMoveFactor;
+                rowModifier -= 1;
+            }else {
+                pixelsToMove = 2; // + randomMoveFactor;
+                rowModifier += 1;
+            }
+            x -= pixelsToMove;
             if (x <= ((columnNum - 1) * 50)){
                 y += 60;
+                movingSpeed -= 2;
                 bounce = false;
             }
         }
@@ -71,12 +93,12 @@ public class AlienShip extends GameObject {
         //g.setColor(Color.white);
 
         if(id == ID.AlienShip2) {
-            if(Math.abs(x) % 2 == 0)g.drawImage(SHIP2_OPEN, x, y, 30, 30, null);
+            if((rowNum + rowModifier) % 2 == 0)g.drawImage(SHIP2_OPEN, x, y, 30, 30, null);
             else g.drawImage(SHIP2_CLOSED, x, y, 30, 30, null);
 
         }
         if(id == ID.AlienShip3) {
-            if(Math.abs(x) % 2 == 0) g.drawImage(SHIP3_OPEN, x, y, 30, 30, null);
+            if((rowNum + rowModifier) % 2 == 0) g.drawImage(SHIP3_OPEN, x, y, 30, 30, null);
             else g.drawImage(SHIP3_CLOSED, x, y, 30, 30, null);
         }
         if(id == ID.AlienUfo) {

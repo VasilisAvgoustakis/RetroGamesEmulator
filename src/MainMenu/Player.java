@@ -28,15 +28,20 @@ public class Player extends GameObject {
 
     }
 
-    @Override
-    public Rectangle getBounds() {
-        return null;
-    }
+
 
     @Override
     public void hide() {
 
     }
+
+
+    @Override
+    public Rectangle getBounds() {
+        return null;
+    }
+
+    public void shoot(){};
 
     public int getPlayerScore(){
         return playerScore;

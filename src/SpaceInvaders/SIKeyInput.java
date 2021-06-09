@@ -24,7 +24,7 @@ public class SIKeyInput extends KeyInput {
                 if (key == KeyEvent.VK_S) tempPlayer.setVelY(5);
                 if (key == KeyEvent.VK_A) tempPlayer.setVelX(-5);
                 if (key == KeyEvent.VK_D) tempPlayer.setVelX(5);
-
+                if (key == KeyEvent.VK_SPACE) tempPlayer.shoot();
             }
         }
         //exits the game
