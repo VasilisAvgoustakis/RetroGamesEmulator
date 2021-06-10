@@ -139,5 +139,4 @@ public class SpaceRaceGame extends Game {
     public static void main (String[]args) throws IOException, InterruptedException {
         new SpaceRaceGame("Space Race");
     }
-
 }
