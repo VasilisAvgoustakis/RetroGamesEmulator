@@ -19,6 +19,7 @@ public class SpaceInvadersGame extends Game implements MouseMotionListener {
     private int initY = (int)(SpaceInvadersGame.WIDTH / 12 );
 
 
+
     public SpaceInvadersGame (String gameTitle) throws IOException, InterruptedException {
         super(gameTitle);
         this.addKeyListener(new SIKeyInput(handler));

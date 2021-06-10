@@ -1,8 +1,6 @@
 package MainMenu;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /** An abstract class from which all game objects inherit. */
 
@@ -26,6 +24,7 @@ public abstract class GameObject{
     public abstract void render(Graphics g) throws InterruptedException;
     public abstract Rectangle getBounds();
     public abstract void hide();
+    public abstract void destroyObject(int objectNum);
 
     //getter & setters
     public void setX(int x){
@@ -51,6 +50,8 @@ public abstract class GameObject{
     public ID getID(){
         return id;
     }
+
+    public int getObjectNum(){ return 0; }
 
     public void setVelX(int velX){
         this.velX = velX;

@@ -19,8 +19,11 @@ public class AlienShip extends GameObject {
     private final BufferedImage SHIP3_OPEN = ImageIO.read(new File(PATH, "alienShip3open.png"));
     private final BufferedImage SHIP3_CLOSED = ImageIO.read(new File(PATH, "alienShip3closed.png"));
     private final BufferedImage UFO = ImageIO.read(new File(PATH, "ufo.png"));
+    //private final Toolkit toolkit = Toolkit.getDefaultToolkit();
+    private final BufferedImage explosion = ImageIO.read(new File (PATH, "/alienexplosion.gif"));
     int moveCounter = 0;
     boolean bounce;
+    boolean explode = false;
     private int originalX;
     private static int shipTotal = 1;
     private int shipNum = 1;
@@ -42,6 +45,8 @@ public class AlienShip extends GameObject {
 
     @Override
     public void tick() {
+        collision();
+
         int randomMoveFactor = (int) (Math.random() * 2 + 1);
         moveCounter++;
 
@@ -92,6 +97,7 @@ public class AlienShip extends GameObject {
 
         //g.setColor(Color.white);
 
+
         if(id == ID.AlienShip2) {
             if((rowNum + rowModifier) % 2 == 0)g.drawImage(SHIP2_OPEN, x, y, 30, 30, null);
             else g.drawImage(SHIP2_CLOSED, x, y, 30, 30, null);
@@ -103,6 +109,32 @@ public class AlienShip extends GameObject {
         }
         if(id == ID.AlienUfo) {
             g.drawImage(UFO, x, y, 30, 30, null);
+        }
+
+        if(explode){
+            System.out.println("BOOM");
+            g.drawImage(explosion, 40, 40 , null);
+            SpaceInvadersGame.handler.objects.remove(this);
+        }
+
+    }
+
+    public void collision(){
+
+    }
+
+
+    @Override
+    public void destroyObject(int shipNum) {
+        //remove Projectile from list
+        for(int i = 0; i < SpaceInvadersGame.handler.objects.size(); i++) {
+            //System.out.println("removed");
+            GameObject tempObject = SpaceInvadersGame.handler.objects.get(i);
+            if (tempObject.getObjectNum() == shipNum) {
+                explode = true;
+                //System.out.println("removed");
+                //SpaceInvadersGame.handler.objects.remove(tempObject);
+            }
         }
     }
 
@@ -116,5 +148,5 @@ public class AlienShip extends GameObject {
 
     }
 
-    public int getShipNum(){ return shipNum;}
+    public int getObjectNum(){ return shipNum;}
 }

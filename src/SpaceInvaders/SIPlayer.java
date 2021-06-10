@@ -78,12 +78,14 @@ public class SIPlayer extends Player {
         for(int i = 0; i < SpaceInvadersGame.handler.players.size(); i++) {
             Player tempPlayer = SpaceInvadersGame.handler.players.get(i);
             if (tempPlayer.getID() == ID.SIPlayer) {
+                //System.out.println("added");
                 SpaceInvadersGame.handler.objects.add(
                         new SIProjectile(tempPlayer.getX() + 23 , tempPlayer.getY() - 20, ID.SIProjectile)
                 );
-                //System.out.println("Piouuu");
+
             }
         }
+
     }
 
     @Override

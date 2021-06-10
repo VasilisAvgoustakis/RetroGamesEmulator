@@ -35,6 +35,11 @@ public class Player extends GameObject {
 
     }
 
+    @Override
+    public void destroyObject(int objectNum) {
+
+    }
+
 
     @Override
     public Rectangle getBounds() {

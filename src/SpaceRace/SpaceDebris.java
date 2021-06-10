@@ -43,4 +43,9 @@ public class SpaceDebris extends GameObject {
     public void hide() {
         
     }
+
+    @Override
+    public void destroyObject(int objectNum) {
+
+    }
 }

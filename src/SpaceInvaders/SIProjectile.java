@@ -1,10 +1,8 @@
 package SpaceInvaders;
 
 import MainMenu.*;
-import SpaceRace.AudioPlayer;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class SIProjectile extends GameObject {
 
@@ -19,14 +17,17 @@ public class SIProjectile extends GameObject {
     public void tick() {
         y -= 15;
         collision();
+
+        //remove projectile after exiting game screen
+        if(y <= 0)hide();
     }
 
     @Override
     public void render(Graphics g) throws InterruptedException {
         //onTarget is true if projectile hits target
-        if(onTarget){
-            hide();
-        }
+        //if(onTarget){
+        //    hide();
+        //}
 
         //scaffolding code lets the bounds of the object appear
         Graphics2D g2d = (Graphics2D) g;
@@ -36,23 +37,38 @@ public class SIProjectile extends GameObject {
         g.setColor(Color.GREEN);
         g.fillOval(x, y,3,30);
 
-
     }
 
     @Override
     public void hide() {
-        y = -100;
+        //remove Projectile from list
+        for(int i = 0; i < SpaceInvadersGame.handler.objects.size(); i++) {
+            //System.out.println("removed");
+            GameObject tempObject = SpaceInvadersGame.handler.objects.get(i);
+            if (tempObject.getID() == ID.SIProjectile) {
+                //System.out.println("removed");
+                SpaceInvadersGame.handler.objects.remove(tempObject);
+            }
+        }
+    }
+
+    @Override
+    public void destroyObject(int objectNum) {
+
     }
 
     public void collision(){
         for(int i = 0; i < SpaceInvadersGame.handler.objects.size(); i++){
             GameObject tmpObject = SpaceInvadersGame.handler.objects.get(i);
-            if(tmpObject.getID() == ID.AlienShip1 ||
-                    tmpObject.getID() == ID.AlienShip2 ||
-                    tmpObject.getID() == ID.AlienShip3){
+            ID tempID = tmpObject.getID();
+            if(tempID == ID.AlienShip1 ||
+                    tempID == ID.AlienShip2 ||
+                    tempID == ID.AlienShip3){
                 if(getBounds().intersects(tmpObject.getBounds())){
                     //collision code: what happens when collision occurs
-                    onTarget = true;
+                    //onTarget = true;
+                    hide();
+                    tmpObject.destroyObject(tmpObject.getObjectNum());
                     //play collision sound
                     //AudioPlayer.getSound("collision").play();
                 }
