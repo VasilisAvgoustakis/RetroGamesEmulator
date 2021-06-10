@@ -19,7 +19,7 @@ public class SIKeyInput extends KeyInput {
         for(int i = 0; i < handler.players.size(); i++) {
             Player tempPlayer = handler.players.get(i);
             if (tempPlayer.getID() == ID.SIPlayer) {
-                //key events for Player 1
+                //key events for PongPlayer 1
                 if (key == KeyEvent.VK_W) tempPlayer.setVelY(-5);
                 if (key == KeyEvent.VK_S) tempPlayer.setVelY(5);
                 if (key == KeyEvent.VK_A) tempPlayer.setVelX(-5);

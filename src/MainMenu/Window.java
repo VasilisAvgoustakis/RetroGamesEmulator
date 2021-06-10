@@ -3,8 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.Serial;
 
-/** The purpose if this class is to create the window for our game. A new Window object is
- * instantiated within the constructor of the the Game class. Window class extends the java.awt.Canvas class.
+/** The purpose if this class is to create the window for our game. A new PongWindow object is
+ * instantiated within the constructor of the the Game class. PongWindow class extends the java.awt.Canvas class.
  * */
 
 public class Window extends Canvas{
@@ -23,7 +23,7 @@ public class Window extends Canvas{
     @Serial
     private static final long serialVersionUID = 1637928755853267139L;
 
-    /**Constructor of Class Window*/
+    /**Constructor of Class PongWindow*/
     public Window(int width, int height, String title, Game game){
         //An extended version of java.awt.Frame that adds support for the JFC/Swing component architecture.
         JFrame frame = new JFrame(title);
