@@ -7,34 +7,34 @@ public class PongGame extends Canvas implements Runnable {
 
     //frame dimensions
     public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
-    private HUD hud;
-    private Spawn spawn;
+    private PongHUD hud;
+    private PongSpawn spawn;
 
 
     //threat variables
     private Thread thread;
     private boolean running = false;
 
-    //Handler variable
-    private Handler handler;
+    //PongHandler variable
+    private PongHandler handler;
 
 
     //PongGame constructor; creates window and pases in frame details
     public PongGame(){
-        handler = new Handler();
-        this.addKeyListener(new KeyInput(handler));
+        handler = new PongHandler();
+        this.addKeyListener(new PongKeyInput(handler));
 
-        new Window(WIDTH, HEIGHT, "Welcome to Pong", this);
+        new PongWindow(WIDTH, HEIGHT, "Welcome to Pong", this);
 
 
-        hud = new HUD(215, 15, 350, 15);
-        spawn = new Spawn(handler, hud);
+        hud = new PongHUD(215, 15, 350, 15);
+        spawn = new PongSpawn(handler, hud);
 
-            handler.addObject(new Player(10, 240, ID.Player));
-           // handler.addObject(new Player(600, 240, ID.Player2));
-            handler.addObject(new Ball((PongGame.WIDTH/2)-5,(PongGame.HEIGHT/2) -5, ID.Ball, handler, hud));
+            handler.addObject(new PongPlayer(10, 240, PongID.Player));
+           // handler.addObject(new PongPlayer(600, 240, PongID.Player2));
+            handler.addObject(new PongBall((PongGame.WIDTH/2)-5,(PongGame.HEIGHT/2) -5, PongID.Ball, handler, hud));
 
-            handler.addObject(new EnemyAI(600, 240, ID.EnemyAI, handler));
+            handler.addObject(new PongEnemyAI(600, 240, PongID.EnemyAI, handler));
 
 
 
