@@ -14,5 +14,6 @@ public enum ID {
     AlienShip3(),
     AlienUfo(),
     SIProjectile,
-    Enemy();
+    Enemy(),
+    Particle();
 }

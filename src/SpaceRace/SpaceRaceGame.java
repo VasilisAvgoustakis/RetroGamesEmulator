@@ -49,6 +49,11 @@ public class SpaceRaceGame extends Game {
             handler.addObject(new SpaceDebris(1200, randomY2, ID.SRDebris, "right"));
         }
 
+        //stop ambient music
+        AudioPlayer.getMusic("ambient").stop();
+        //play victory music
+        AudioPlayer.getMusic("victory").play(1, 2);
+
     }
 
     @Override

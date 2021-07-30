@@ -15,7 +15,7 @@ public class AudioPlayer {
     public static void load() {
         try {
             soundMap.put("collision", new Sound("Sounds/SpaceRaceSounds/collision.ogg"));
-            soundMap.put("victory", new Sound("Sounds/SpaceRaceSounds/victory.ogg"));
+            musicMap.put("victory", new Music("Sounds/SpaceRaceSounds/victory.ogg"));
             musicMap.put("ambient", new Music("Sounds/SpaceRaceSounds/ambient.ogg"));
         } catch (SlickException e) {
             e.printStackTrace();

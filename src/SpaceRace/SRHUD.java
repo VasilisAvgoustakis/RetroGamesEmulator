@@ -16,6 +16,7 @@ public class SRHUD {
     private static int timeBarHeight = 240;
     private int timeBarY = SpaceRaceGame.HEIGHT - timeBarHeight;
     private int hudTime = 0;
+    private boolean playVictorySound = false;
 
     Handler handler = SpaceRaceGame.getHandler();
     public void tick() {
@@ -39,7 +40,7 @@ public class SRHUD {
             if(tmpPlayer.getID() == ID.SRPlayer2){
                 scoreP2 = tmpPlayer.getPlayerScore();
             }
-        };
+        }
     }
 
     public void render(Graphics g){
@@ -68,10 +69,8 @@ public class SRHUD {
         if(timeBarHeight < (int)(SpaceRaceGame.WIDTH / 12 * 0.24)){
 
             //stop ambient music
-            AudioPlayer.getMusic("ambient").stop();
-            //play victory theme
-            //TODO fix victory music
-            AudioPlayer.getSound("victory").play();
+            //AudioPlayer.getMusic("ambient").stop();
+
 
             Font currentFont3 = g.getFont();
             Font newFont3 = currentFont.deriveFont(currentFont.getSize() * 7.4F);
