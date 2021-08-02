@@ -20,13 +20,13 @@ public class SRKeyInput extends KeyInput{
         for(int i = 0; i < handler.players.size(); i++) {
             Player tempPlayer = handler.players.get(i);
             if (tempPlayer.getID() == ID.SRPlayer) {
-                //key events for Player 1
+                //key events for PongPlayer 1
                 if (key == KeyEvent.VK_W) tempPlayer.setVelY(-5);
                 if (key == KeyEvent.VK_S) tempPlayer.setVelY(5);
 
             }
             if (tempPlayer.getID() == ID.SRPlayer2) {
-                //key events for Player 2
+                //key events for PongPlayer 2
                 if (key == KeyEvent.VK_UP) tempPlayer.setVelY(-5);
                 if (key == KeyEvent.VK_DOWN) tempPlayer.setVelY(5);
             }
@@ -62,14 +62,14 @@ public class SRKeyInput extends KeyInput{
             Player tempPlayer = handler.players.get(i);
 
             if(tempPlayer.getID() == ID.SRPlayer){
-                //key events for Player 1
+                //key events for PongPlayer 1
                 if(key == KeyEvent.VK_W) tempPlayer.setVelY(0);
                 if(key == KeyEvent.VK_S) tempPlayer.setVelY(0);
                 if(key == KeyEvent.VK_D) tempPlayer.setVelX(0);
                 if(key == KeyEvent.VK_A) tempPlayer.setVelX(0);
             }
             if(tempPlayer.getID() == ID.SRPlayer2){
-                //key events for Player 2
+                //key events for PongPlayer 2
                 if(key == KeyEvent.VK_UP) tempPlayer.setVelY(0);
                 if(key == KeyEvent.VK_DOWN) tempPlayer.setVelY(0);
                 if(key == KeyEvent.VK_RIGHT) tempPlayer.setVelX(0);

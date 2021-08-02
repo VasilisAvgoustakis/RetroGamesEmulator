@@ -22,7 +22,7 @@ public class Game extends Canvas implements Runnable {
     application to have multiple threads of execution running concurrently.*/
     private Thread thread;
     protected static boolean running = false;
-    //declare Handler
+    //declare PongHandler
     public static Handler handler;
     public static int gameLevel = 1;
     public static int gameTime = 0;
@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable {
         handler = new Handler();
         //adds a KeyListener to the class. Class listens for pressed keys.
         this.addKeyListener(new KeyInput(handler));
-        //instantiate a new Window
+        //instantiate a new PongWindow
         new Window(WIDTH, HEIGHT, gameTitle, this);
     }
 
@@ -90,7 +90,7 @@ public class Game extends Canvas implements Runnable {
 
     protected void render() throws InterruptedException {
         //The BufferStrategy class represents the mechanism with which
-        //to organize complex memory on a particular Canvas or Window.
+        //to organize complex memory on a particular Canvas or PongWindow.
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null){
             this.createBufferStrategy(3);
@@ -104,8 +104,8 @@ public class Game extends Canvas implements Runnable {
         //fills a rectangle the size of the game window with the color set above
         g.fillRect(0, 0, WIDTH, HEIGHT);
         //Calls the corresponding render method. To draw objects on screen.
-        // From here -> handler -> GameObject -> to actual gameObject
-        // that extends GameObject Class
+        // From here -> handler -> PongGameObject -> to actual gameObject
+        // that extends PongGameObject Class
         handler.render(g);
         //Disposes of this graphics context and releases any system resources that it is using.
         g.dispose();

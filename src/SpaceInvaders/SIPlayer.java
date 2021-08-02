@@ -32,8 +32,8 @@ public class SIPlayer extends Player {
         g.drawImage(SHIP, x, y, 50, 50, null);
     }
 
-    //originaly defined in GameObject Class as an abstract method. Here it is used
-    //to move the Player Object by adding to objects x and y vars
+    //originaly defined in PongGameObject Class as an abstract method. Here it is used
+    //to move the PongPlayer Object by adding to objects x and y vars
     @Override
     public void tick() {
         x += velX;

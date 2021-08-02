@@ -15,5 +15,7 @@ public enum ID {
     AlienUfo(),
     SIProjectile,
     Enemy(),
-    Particle();
+    Particle(),
+    JFPlayer(),
+    JFPlayer2();
 }

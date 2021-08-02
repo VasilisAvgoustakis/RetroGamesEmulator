@@ -76,10 +76,10 @@ public class SRHUD {
             Font newFont3 = currentFont.deriveFont(currentFont.getSize() * 7.4F);
             g.setFont(newFont3);
             if(scoreP1 > scoreP2) {
-                printResultString(g, "Player 1 won this Game!", 800, 200, 400);
+                printResultString(g, "PongPlayer 1 won this Game!", 800, 200, 400);
             }
             else if(scoreP2 > scoreP1){
-                printResultString(g, "Player 2 won this Game!", 800, 200, 400);
+                printResultString(g, "PongPlayer 2 won this Game!", 800, 200, 400);
             }
             else printResultString(g, "That's a draw!", 800, 200, 400);;
         }

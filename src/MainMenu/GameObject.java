@@ -7,7 +7,7 @@ import java.awt.*;
 public abstract class GameObject{
     //x and y used to set the GameObjects location
     protected int x, y;
-    // Object ID to differantiate through differebte kind of objects
+    // Object PongID to differantiate through differebte kind of objects
     protected ID id;
     // velocity of object movement
     protected int velX, velY;

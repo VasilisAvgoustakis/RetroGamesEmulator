@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**Player class extends GameObject. To be used as the parent Class of all Player classes
+/**PongPlayer class extends PongGameObject. To be used as the parent Class of all PongPlayer classes
  * within each game Package directory.*/
 public class Player extends GameObject {
     public Handler handler;
@@ -16,8 +16,8 @@ public class Player extends GameObject {
     }
 
 
-    //originaly defined in GameObject Class as an abstract method. Here it is used
-    //to move the Player Object by adding to objects x and y vars
+    //originaly defined in PongGameObject Class as an abstract method. Here it is used
+    //to move the PongPlayer Object by adding to objects x and y vars
     @Override
     public void tick() {
 

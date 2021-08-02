@@ -73,7 +73,7 @@ public class SpaceRaceGame extends Game {
     @Override
     public void render() throws InterruptedException {
         //The BufferStrategy class represents the mechanism with which
-        //to organize complex memory on a particular Canvas or Window.
+        //to organize complex memory on a particular Canvas or PongWindow.
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null){
             this.createBufferStrategy(3);
@@ -87,8 +87,8 @@ public class SpaceRaceGame extends Game {
         //fills a rectangle the size of the game window with the color set above
         g.fillRect(0, 0, WIDTH, HEIGHT);
         //Calls the corresponding render method. To draw objects on screen.
-        // From here -> handler -> GameObject -> to actual gameObject
-        // that extends GameObject Class
+        // From here -> handler -> PongGameObject -> to actual gameObject
+        // that extends PongGameObject Class
         handler.render(g);
         hud.render(g);
         //Disposes of this graphics context and releases any system resources that it is using.
@@ -144,5 +144,4 @@ public class SpaceRaceGame extends Game {
     public static void main (String[]args) throws IOException, InterruptedException {
         new SpaceRaceGame("Space Race");
     }
-
 }
